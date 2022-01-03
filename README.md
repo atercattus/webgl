@@ -1,9 +1,9 @@
 # webgl
 Golang WebAssembly wrapper for WebGL 1.0 and 2.0
 
-## Requeriments
+## Requirements
 
-Golang 1.11 or newer
+Golang 1.15 or newer
 
 ## Build 
 ```bash
