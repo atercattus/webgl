@@ -5,10 +5,11 @@
 package main
 
 import (
-	"github.com/go-gl/mathgl/mgl32"
-	"github.com/nuberu/webgl"
 	"syscall/js"
 	"unsafe"
+
+	"github.com/go-gl/mathgl/mgl32"
+	"github.com/nuberu/webgl"
 )
 
 var vertices = []float32{
@@ -137,14 +138,14 @@ func main() {
 
 		// Drawing the Cube
 		movMatrix := mgl32.Ident4()
-		var renderFrame js.Callback
+		var renderFrame js.Func
 		var tmark float32
 		var rotation = float32(0)
 
 		// Bind to element array for draw function
 		gl.BindBuffer(webgl.ELEMENT_ARRAY_BUFFER, indexBuffer)
 
-		renderFrame = js.NewCallback(func(args []js.Value) {
+		renderFrame = js.FuncOf(func(_ js.Value, args []js.Value) interface{} {
 			// Calculate rotation rate
 			now := float32(args[0].Float())
 			tdiff := now - tmark
@@ -165,13 +166,15 @@ func main() {
 
 			// Clear the screen
 			gl.Enable(webgl.DEPTH_TEST)
-			gl.Clear(uint32(webgl.COLOR_BUFFER_BIT) & uint32(webgl.DEPTH_BUFFER_BIT))
+			gl.Clear(uint32(webgl.COLOR_BUFFER_BIT) | uint32(webgl.DEPTH_BUFFER_BIT))
 
 			// Draw the cube
 			gl.DrawElements(webgl.TRIANGLES, len(indices), webgl.UNSIGNED_SHORT, 0)
 
 			// Call next frame
 			js.Global().Call("requestAnimationFrame", renderFrame)
+
+			return nil
 		})
 		defer renderFrame.Release()
 

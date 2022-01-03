@@ -4,8 +4,9 @@
 package main
 
 import (
-	"github.com/nuberu/webgl"
 	"syscall/js"
+
+	"github.com/nuberu/webgl"
 )
 
 const vertexShaderCode = `
