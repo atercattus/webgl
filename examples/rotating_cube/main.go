@@ -8,8 +8,8 @@ import (
 	"syscall/js"
 	"unsafe"
 
+	"github.com/atercattus/webgl"
 	"github.com/go-gl/mathgl/mgl32"
-	"github.com/nuberu/webgl"
 )
 
 var vertices = []float32{

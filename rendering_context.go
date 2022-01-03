@@ -4,8 +4,8 @@ import (
 	"errors"
 	"syscall/js"
 
-	"github.com/nuberu/webgl/extensions"
-	"github.com/nuberu/webgl/types"
+	"github.com/atercattus/webgl/extensions"
+	"github.com/atercattus/webgl/types"
 )
 
 // WebGL context wrapper

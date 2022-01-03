@@ -1,6 +1,6 @@
 package extensions
 
-import "github.com/nuberu/webgl/types"
+import "github.com/atercattus/webgl/types"
 
 const (
 	UNMASKED_VENDOR_WEBGL   types.GLEnum = 0x9245

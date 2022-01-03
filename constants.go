@@ -1,6 +1,6 @@
 package webgl
 
-import "github.com/nuberu/webgl/types"
+import "github.com/atercattus/webgl/types"
 
 const (
 	POINTS                                       types.GLEnum = 0x0000

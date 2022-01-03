@@ -6,7 +6,7 @@ package main
 import (
 	"syscall/js"
 
-	"github.com/nuberu/webgl"
+	"github.com/atercattus/webgl"
 )
 
 const vertexShaderCode = `

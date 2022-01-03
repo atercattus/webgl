@@ -1,4 +1,4 @@
-module github.com/nuberu/webgl
+module github.com/atercattus/webgl
 
 go 1.17
 
