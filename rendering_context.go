@@ -4,6 +4,7 @@ import (
 	"errors"
 	"syscall/js"
 
+	"github.com/atercattus/webgl/ebiten_jsutil"
 	"github.com/atercattus/webgl/extensions"
 	"github.com/atercattus/webgl/types"
 )
@@ -1555,4 +1556,17 @@ func (c *RenderingContext) VertexAttribPointer(index int, size int, aType types.
 
 func (c *RenderingContext) Viewport(x int, y int, width int, height int) {
 	c.js.Call("viewport", x, y, width, height)
+}
+
+func jsTypedArrayOf(srcData interface{}) (arr js.Value) {
+	switch s := srcData.(type) {
+	case []float32:
+		return ebiten_jsutil.TemporaryFloat32Array(len(s), s)
+	case []uint16:
+		return ebiten_jsutil.TemporaryUint8ArrayFromUint16Slice(len(s), s)
+	case []uint8:
+		return ebiten_jsutil.TemporaryUint8ArrayFromUint8Slice(len(s), s)
+	default:
+		panic("TypedArrayOf: unsupported srcData type")
+	}
 }
